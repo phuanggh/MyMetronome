@@ -9,19 +9,19 @@
 import UIKit
 
 protocol TempoVCDelegate: class {
-    func passTempoInfo(tempo: [Int], tempoIndex:[Int])
+    func passTempoInfo()
 }
 
 class TempoPickerVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     weak var delegate: TempoVCDelegate?
     
-    let upperNum = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
-    let lowerNum = [1, 2, 4, 8, 16]
-    var currentTempo = [4, 4]
-    var currentTempoIndex = [3,2]
+//    let topNum = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+//    let bottomNum = [1, 2, 4, 8, 16]
+//    var currentTimeSig = [4, 4]
+//    var currentTimeSigIndex = [3,2]
     
-    @IBOutlet weak var pickerViewOutlet: UIPickerView!
+    @IBOutlet weak var pickerOutlet: UIPickerView!
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
@@ -30,9 +30,9 @@ class TempoPickerVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch component {
         case 0:
-            return upperNum.count
+            return MetronomeDataController.topNum.count
         case 1:
-            return lowerNum.count
+            return MetronomeDataController.bottomNum.count
         default:
             return 0
         }
@@ -40,32 +40,40 @@ class TempoPickerVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
 
-        
         if component == 0 {
-            let item = upperNum[row]
+            let item = MetronomeDataController.topNum[row]
             return "\(item)"
         } else {
-            let item = lowerNum[row]
+            let item = MetronomeDataController.bottomNum[row]
             return "\(item)"
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if component == 0 {
-            currentTempo[0] = upperNum[row]
-            currentTempoIndex[0] = row
+            MetronomeDataController.currentTimeSig[0] = MetronomeDataController.topNum[row]
+//            currentTimeSigIndex[0] = row
 //            print(currentTempo)
         } else if component == 1 {
-            currentTempo[1] = lowerNum[row]
-            currentTempoIndex[1] = row
+            MetronomeDataController.currentTimeSig[1] = MetronomeDataController.bottomNum[row]
+//            currentTimeSigIndex[1] = row
 //            print(currentTempo)
         }
-        delegate?.passTempoInfo(tempo: currentTempo, tempoIndex: currentTempoIndex)
+        delegate?.passTempoInfo()
     }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Top Num
+        let selectedTopNum = MetronomeDataController.topNum.firstIndex(of: MetronomeDataController.currentTimeSig[0]) ?? 0
+        
+        pickerOutlet.selectRow(selectedTopNum, inComponent: 0, animated: false)
+        
+        // Bottom Num
+        let selectedBottomNum = MetronomeDataController.bottomNum.firstIndex(of: MetronomeDataController.currentTimeSig[1]) ?? 0
+        pickerOutlet.selectRow(selectedBottomNum, inComponent: 1, animated: false)
 
     }
     

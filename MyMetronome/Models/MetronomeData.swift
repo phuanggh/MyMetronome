@@ -35,39 +35,43 @@ enum TempoMarkings: String, CaseIterable {
 }
 
 class MetronomeDataController {
+//    static let tempoArray = TempoMarkings.allCases.map { $0.rawValue }
     static var tempoStatus: TempoMarkings = .Andante
-    static var currentSpeed: Int = 70
+    static var currentBPM: Int = 70
+    static let topNum = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+    static let bottomNum = [1, 2, 4, 8, 16]
+    static var currentTimeSig = [4, 4]
 
     
     static func speedConverter() {
         switch MetronomeDataController.tempoStatus {
         case .Prestississimo:
-            MetronomeDataController.currentSpeed = 200
+            MetronomeDataController.currentBPM = 200
         case .Presto:
-            MetronomeDataController.currentSpeed = 180
+            MetronomeDataController.currentBPM = 180
         case .Vivace:
-            MetronomeDataController.currentSpeed = 156
+            MetronomeDataController.currentBPM = 156
         case .Allegro:
-            MetronomeDataController.currentSpeed = 130
+            MetronomeDataController.currentBPM = 130
         case .Allegretto:
-            MetronomeDataController.currentSpeed = 104
+            MetronomeDataController.currentBPM = 104
         case .Moderato:
-            MetronomeDataController.currentSpeed = 90
+            MetronomeDataController.currentBPM = 90
         case .Andantino:
-            MetronomeDataController.currentSpeed = 76
+            MetronomeDataController.currentBPM = 76
         case .Andante:
-            MetronomeDataController.currentSpeed = 70
+            MetronomeDataController.currentBPM = 70
         case .Adagio:
-            MetronomeDataController.currentSpeed = 54
+            MetronomeDataController.currentBPM = 54
         case .Lento:
-            MetronomeDataController.currentSpeed = 50
+            MetronomeDataController.currentBPM = 50
         case .Largo:
-            MetronomeDataController.currentSpeed = 43
+            MetronomeDataController.currentBPM = 43
         }
     }
     
     func markingConverter() {
-        switch MetronomeDataController.currentSpeed {
+        switch MetronomeDataController.currentBPM {
         case 200...260:
             MetronomeDataController.tempoStatus = .Prestississimo
         case 169...199:

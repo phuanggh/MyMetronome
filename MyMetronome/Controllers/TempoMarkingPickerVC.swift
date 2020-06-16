@@ -16,6 +16,9 @@ class TempoMarkingPickerVC: UIViewController, UIPickerViewDelegate, UIPickerView
     
     weak var delegate: TempoMarkingDelegate?
     
+    
+    @IBOutlet weak var pickerOutlet: UIPickerView!
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -37,6 +40,9 @@ class TempoMarkingPickerVC: UIViewController, UIPickerViewDelegate, UIPickerView
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let selectedRow = TempoMarkings.tempoArray.firstIndex(of: MetronomeDataController.tempoStatus.rawValue) ?? 0
+        pickerOutlet.selectRow(selectedRow, inComponent: 0, animated: false)
 
 
     }
