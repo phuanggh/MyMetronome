@@ -1,5 +1,5 @@
 //
-//  TempoMarkingPickerVCViewController.swift
+//  TempoMarkingPickerVC.swift
 //  MyMetronome
 //
 //  Created by Penny Huang on 2020/6/13.

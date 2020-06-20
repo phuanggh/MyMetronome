@@ -8,41 +8,46 @@
 
 import UIKit
 
-class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TempoVCDelegate, TempoMarkingDelegate {
+class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSigVCDelegate, TempoMarkingDelegate {
 
     var speed: Double = 60
     var timer = Timer()
     var startPanlocation: CGPoint!
     
     @IBOutlet weak var tempoButtonOutlet: UIButton!
-//    @IBOutlet weak var speedImageOutlet: UIImageView!
-//    @IBOutlet weak var bpmTextFiledOutlet: UITextField!
     
     @IBOutlet weak var bpmLabelOutlet: UILabel!
     
     @IBOutlet weak var tempoMarkingButtonOutlet: UIButton!
     
-//    @IBAction func bpmEditingDidChanged(_ sender: Any) {
-//        print("end editing")
-//        if let bpmValue = Double(bpmTextFiledOutlet.text!) {
-//            speed = bpmValue
-//            timer.invalidate()
-//            triggerTimer()
-//            print("editing did end")
-//        } else {
-//            print("invalid bpm value")
-//        }
-//
-//    }
+    // MARK: - BPM
+    @IBAction func minusButtonPressed(_ sender: Any) {
+        if MetronomeDataController.currentBPM > 40 {
+            MetronomeDataController.currentBPM -= 1
+            updateBPMLabel()
+        }
+    }
+    
+    @IBAction func addButtonPressed(_ sender: Any) {
+        if MetronomeDataController.currentBPM < 240 {
+            MetronomeDataController.currentBPM += 1
+            updateBPMLabel()
+        }
+    }
+    
+    func updateBPMLabel() {
+        bpmLabelOutlet.text = String(MetronomeDataController.currentBPM)
+    }
     
     
-    // MARK: - TempoVC Delegate
-    func passTempoInfo() {
+    
+    // MARK: - TimeSigVC Delegate
+    func passTimeSigInfo() {
 //        currentTempo = tempo
        let tempoStr = "\(MetronomeDataController.currentTimeSig[0]) / \(MetronomeDataController.currentTimeSig[1])"
         tempoButtonOutlet.setTitle(tempoStr, for: .normal)
         
-        print(tempoStr)
+//        print(tempoStr)
     }
     
     // MARK: - TempoMarking Delegate
@@ -97,14 +102,14 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TempoVC
     
     // MARK: - Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print(sender)
+//        print(sender)
         let popoverController = segue.destination.popoverPresentationController
 //        if sender is UIButton {
             popoverController?.sourceRect = (sender as! UIButton).bounds
 //        }
         popoverController?.delegate = self
         
-        let tempoVC = segue.destination as? TempoPickerVC
+        let tempoVC = segue.destination as? TimeSigPickerVC
         tempoVC?.delegate = self
 //        tempoVC?.pickerViewOutlet.selectRow(, inComponent: 0, animated: true)
         let markingVC = segue.destination as? TempoMarkingPickerVC

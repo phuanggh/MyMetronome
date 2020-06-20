@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7A6C222F2491B6F40005BA74 /* MetronomeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6C222E2491B6F40005BA74 /* MetronomeData.swift */; };
-		7ABBD0792489D29F00415893 /* TempoPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBD0782489D29F00415893 /* TempoPickerVC.swift */; };
+		7ABBD0792489D29F00415893 /* TimeSigPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBD0782489D29F00415893 /* TimeSigPickerVC.swift */; };
 		7AD5CB8A2494A0BA009F6E43 /* TempoMarkingPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD5CB892494A0BA009F6E43 /* TempoMarkingPickerVC.swift */; };
 		7AF457B924836D8D004E0202 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF457B824836D8D004E0202 /* AppDelegate.swift */; };
 		7AF457BB24836D8D004E0202 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF457BA24836D8D004E0202 /* SceneDelegate.swift */; };
@@ -20,7 +20,7 @@
 
 /* Begin PBXFileReference section */
 		7A6C222E2491B6F40005BA74 /* MetronomeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeData.swift; sourceTree = "<group>"; };
-		7ABBD0782489D29F00415893 /* TempoPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempoPickerVC.swift; sourceTree = "<group>"; };
+		7ABBD0782489D29F00415893 /* TimeSigPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSigPickerVC.swift; sourceTree = "<group>"; };
 		7AD5CB892494A0BA009F6E43 /* TempoMarkingPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempoMarkingPickerVC.swift; sourceTree = "<group>"; };
 		7AF457B524836D8D004E0202 /* MyMetronome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMetronome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AF457B824836D8D004E0202 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,7 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				7AF457BC24836D8D004E0202 /* MainVC.swift */,
-				7ABBD0782489D29F00415893 /* TempoPickerVC.swift */,
+				7ABBD0782489D29F00415893 /* TimeSigPickerVC.swift */,
 				7AD5CB892494A0BA009F6E43 /* TempoMarkingPickerVC.swift */,
 			);
 			path = Controllers;
@@ -174,7 +174,7 @@
 				7AF457BD24836D8D004E0202 /* MainVC.swift in Sources */,
 				7A6C222F2491B6F40005BA74 /* MetronomeData.swift in Sources */,
 				7AF457B924836D8D004E0202 /* AppDelegate.swift in Sources */,
-				7ABBD0792489D29F00415893 /* TempoPickerVC.swift in Sources */,
+				7ABBD0792489D29F00415893 /* TimeSigPickerVC.swift in Sources */,
 				7AF457BB24836D8D004E0202 /* SceneDelegate.swift in Sources */,
 				7AD5CB8A2494A0BA009F6E43 /* TempoMarkingPickerVC.swift in Sources */,
 			);
