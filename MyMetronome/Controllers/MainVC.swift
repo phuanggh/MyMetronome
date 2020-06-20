@@ -10,7 +10,6 @@ import UIKit
 
 class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSigVCDelegate, TempoMarkingDelegate {
 
-    var speed: Double = 60
     var timer = Timer()
     var startPanlocation: CGPoint!
     
@@ -20,67 +19,85 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
     
     @IBOutlet weak var tempoMarkingButtonOutlet: UIButton!
     
+    @IBOutlet weak var minusButtonOutlet: UIButton!
+    @IBOutlet weak var addButtonOutlet: UIButton!
+    
     // MARK: - BPM
     @IBAction func minusButtonPressed(_ sender: Any) {
-        if MetronomeDataController.currentBPM > 40 {
-            MetronomeDataController.currentBPM -= 1
-            updateBPMLabel()
-        }
+        minusBPM()
     }
     
     @IBAction func addButtonPressed(_ sender: Any) {
-        if MetronomeDataController.currentBPM < 240 {
-            MetronomeDataController.currentBPM += 1
+        addBPM()
+    }
+    
+    // MARK: Gesture
+    @IBAction func minusLongPressHandler(_ sender: Any) {
+        minusBPM()
+    }
+    
+    @IBAction func addLongPressHandler(_ sender: Any) {
+        addBPM()
+    }
+    
+    // MARK: BPM Calculation Functions
+    func minusBPM() {
+        if MetronomeDataController.currentBPM > 40 {
+            MetronomeDataController.currentBPM -= 1
             updateBPMLabel()
+            
+            if timer.isValid {
+                triggerTimer()
+            }
+            
         }
     }
     
+    func addBPM() {
+        if MetronomeDataController.currentBPM < 240 {
+            MetronomeDataController.currentBPM += 1
+            updateBPMLabel()
+            
+            if timer.isValid {
+                triggerTimer()
+            }
+        }
+        
+    }
+    
+    // MARK: BPM Display
     func updateBPMLabel() {
         bpmLabelOutlet.text = String(MetronomeDataController.currentBPM)
     }
     
     
-    
-    // MARK: - TimeSigVC Delegate
+    // MARK: - Time Signature
+    // TimeSigVC Delegate
     func passTimeSigInfo() {
 //        currentTempo = tempo
        let tempoStr = "\(MetronomeDataController.currentTimeSig[0]) / \(MetronomeDataController.currentTimeSig[1])"
         tempoButtonOutlet.setTitle(tempoStr, for: .normal)
         
+        if timer.isValid {
+            triggerTimer()
+        }
 //        print(tempoStr)
     }
     
-    // MARK: - TempoMarking Delegate
+    // MARK: - Tempo Marking
+    // TempoMarking Delegate
     func updateTempoMarking() {
         tempoMarkingButtonOutlet.setTitle(MetronomeDataController.tempoStatus.rawValue, for: .normal)
         
         MetronomeDataController.speedConverter()
         bpmLabelOutlet.text = String(MetronomeDataController.currentBPM)
+        
+        if timer.isValid {
+            triggerTimer()
+        }
     }
     
     
-    // MARK: - Gesture
-//    @IBAction func panHandler(_ sender: UIPanGestureRecognizer) {
-//
-//        if sender.state == .began {
-//            startPanlocation = sender.location(in: sender.view)
-//        } else if sender.state == .changed {
-//            let stopLocation = sender.location(in: sender.view)
-//            let abscissaChange = (stopLocation.y - startPanlocation.y)
-//
-//            if abscissaChange > 0 {
-//                speed -= 0.1
-//            } else if abscissaChange < 0 {
-//                speed += 0.1
-//            }
-////            bpmTextFiledOutlet.text = String(Int(speed))
-//            bpmLabelOutlet.text = String(Int(speed))
-//        }
-//
-//    }
-    
-    
-
     // MARK: - Beat
     @IBAction func playButtonPressed(_ sender: Any) {
         if timer.isValid {
@@ -92,8 +109,13 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
     
     
     func triggerTimer() {
+        timer.invalidate()
+        
         var time = 0
-        timer = Timer.scheduledTimer(withTimeInterval: 60.00 / Double(speed), repeats: true) { (timer) in
+        let buttonNum = MetronomeDataController.currentTimeSig[1]
+        let timeInterval = 60.00 / Double(MetronomeDataController.currentBPM) / ( Double(buttonNum) / Double(4) )
+        
+        timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { (timer) in
             
             time += 1
             print(time)
@@ -117,14 +139,16 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
         
     }
     
-
+    // MARK: - Pop Over
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+        bpmLabelOutlet.text = String(MetronomeDataController.currentBPM)
+
     }
 
 

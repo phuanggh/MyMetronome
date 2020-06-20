@@ -86,22 +86,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kBs-oG-Adl">
-                                <rect key="frame" x="200" y="625" width="56" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" image="plus.circle" catalog="system"/>
-                                <connections>
-                                    <action selector="addButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tf9-Yv-mAy"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NC8-0j-JCN">
                                 <rect key="frame" x="138" y="630" width="54" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" image="minus.circle" catalog="system"/>
                                 <connections>
                                     <action selector="minusButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jut-Au-waA"/>
+                                    <outletCollection property="gestureRecognizers" destination="vqj-UE-Qga" appends="YES" id="L8A-A9-8GZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kBs-oG-Adl">
+                                <rect key="frame" x="217" y="630" width="56" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" image="plus.circle" catalog="system"/>
+                                <connections>
+                                    <action selector="addButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tf9-Yv-mAy"/>
+                                    <outletCollection property="gestureRecognizers" destination="ldJ-5c-23v" appends="YES" id="PPE-NM-qZM"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -109,12 +113,26 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="addButtonOutlet" destination="kBs-oG-Adl" id="1Jc-V8-5WZ"/>
                         <outlet property="bpmLabelOutlet" destination="Fr9-Ni-Jif" id="bym-rN-jTX"/>
+                        <outlet property="minusButtonOutlet" destination="NC8-0j-JCN" id="hKx-n6-hmF"/>
                         <outlet property="tempoButtonOutlet" destination="ZkA-a0-UXZ" id="My7-3V-Dis"/>
                         <outlet property="tempoMarkingButtonOutlet" destination="4o8-iA-DYC" id="RQm-Ej-Fl0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="vqj-UE-Qga" userLabel="Minus Long Press Gesture Recognizer">
+                    <connections>
+                        <action selector="minusLongPressHandler:" destination="BYZ-38-t0r" id="4Kp-XH-vT9"/>
+                        <outlet property="delegate" destination="NC8-0j-JCN" id="cJr-5m-Ica"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="ldJ-5c-23v" userLabel="Add Long Press Gesture Recognizer">
+                    <connections>
+                        <action selector="addLongPressHandler:" destination="BYZ-38-t0r" id="j8c-Bi-YtR"/>
+                        <outlet property="delegate" destination="kBs-oG-Adl" id="iGA-7g-HsT"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="126.5625"/>
         </scene>
