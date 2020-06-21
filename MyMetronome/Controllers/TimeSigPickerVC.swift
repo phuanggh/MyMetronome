@@ -16,11 +16,6 @@ class TimeSigPickerVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     
     weak var delegate: TimeSigVCDelegate?
     
-//    let topNum = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
-//    let bottomNum = [1, 2, 4, 8, 16]
-//    var currentTimeSig = [4, 4]
-//    var currentTimeSigIndex = [3,2]
-    
     @IBOutlet weak var pickerOutlet: UIPickerView!
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

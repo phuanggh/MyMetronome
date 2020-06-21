@@ -22,29 +22,34 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
     @IBOutlet weak var minusButtonOutlet: UIButton!
     @IBOutlet weak var addButtonOutlet: UIButton!
     
+    @IBOutlet var beatImageOutlets: [UIImageView]!
+    
+    
+    
     // MARK: - BPM
     @IBAction func minusButtonPressed(_ sender: Any) {
-        minusBPM()
+        minusBPMValue()
     }
     
     @IBAction func addButtonPressed(_ sender: Any) {
-        addBPM()
+        addBPMValue()
     }
     
     // MARK: Gesture
     @IBAction func minusLongPressHandler(_ sender: Any) {
-        minusBPM()
+        minusBPMValue()
     }
     
     @IBAction func addLongPressHandler(_ sender: Any) {
-        addBPM()
+        addBPMValue()
     }
     
     // MARK: BPM Calculation Functions
-    func minusBPM() {
+    func minusBPMValue() {
         if MetronomeDataController.currentBPM > 40 {
             MetronomeDataController.currentBPM -= 1
             updateBPMLabel()
+            updateMarkingUI()
             
             if timer.isValid {
                 triggerTimer()
@@ -53,10 +58,11 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
         }
     }
     
-    func addBPM() {
+    func addBPMValue() {
         if MetronomeDataController.currentBPM < 240 {
             MetronomeDataController.currentBPM += 1
             updateBPMLabel()
+            updateMarkingUI()
             
             if timer.isValid {
                 triggerTimer()
@@ -65,9 +71,14 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
         
     }
     
-    // MARK: BPM Display
+    // MARK: UI Display
     func updateBPMLabel() {
         bpmLabelOutlet.text = String(MetronomeDataController.currentBPM)
+    }
+    
+    func updateMarkingUI() {
+        MetronomeDataController.markingConverter()
+        tempoMarkingButtonOutlet.setTitle(MetronomeDataController.currentTempoMarking.rawValue, for: .normal)
     }
     
     
@@ -78,16 +89,27 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
        let tempoStr = "\(MetronomeDataController.currentTimeSig[0]) / \(MetronomeDataController.currentTimeSig[1])"
         tempoButtonOutlet.setTitle(tempoStr, for: .normal)
         
+        updateBeatUI(MetronomeDataController.currentTimeSig[0])
+        
         if timer.isValid {
             triggerTimer()
         }
 //        print(tempoStr)
     }
     
+    func updateBeatUI(_ topNum: Int) {
+        let showingImageNum = topNum - 1
+    
+        // change the range back to 0...15 when the number of images are back to 16
+        for i in 0...14 {
+            beatImageOutlets[i].isHidden = i <= showingImageNum ? false : true
+        }
+    }
+    
     // MARK: - Tempo Marking
     // TempoMarking Delegate
     func updateTempoMarking() {
-        tempoMarkingButtonOutlet.setTitle(MetronomeDataController.tempoStatus.rawValue, for: .normal)
+        tempoMarkingButtonOutlet.setTitle(MetronomeDataController.currentTempoMarking.rawValue, for: .normal)
         
         MetronomeDataController.speedConverter()
         bpmLabelOutlet.text = String(MetronomeDataController.currentBPM)

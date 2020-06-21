@@ -36,7 +36,7 @@ enum TempoMarkings: String, CaseIterable {
 
 class MetronomeDataController {
 //    static let tempoArray = TempoMarkings.allCases.map { $0.rawValue }
-    static var tempoStatus: TempoMarkings = .Andante
+    static var currentTempoMarking: TempoMarkings = .Andante
     static var currentBPM: Int = 70
     static let topNum = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
     static let bottomNum = [1, 2, 4, 8, 16]
@@ -44,7 +44,7 @@ class MetronomeDataController {
 
     
     static func speedConverter() {
-        switch MetronomeDataController.tempoStatus {
+        switch MetronomeDataController.currentTempoMarking {
         case .Prestississimo:
             MetronomeDataController.currentBPM = 200
         case .Presto:
@@ -70,32 +70,32 @@ class MetronomeDataController {
         }
     }
     
-    func markingConverter() {
+    static func markingConverter() {
         switch MetronomeDataController.currentBPM {
         case 200...260:
-            MetronomeDataController.tempoStatus = .Prestississimo
+            MetronomeDataController.currentTempoMarking = .Prestississimo
         case 169...199:
-            MetronomeDataController.tempoStatus = .Presto
+            MetronomeDataController.currentTempoMarking = .Presto
         case 155...168:
-            MetronomeDataController.tempoStatus = .Vivace
+            MetronomeDataController.currentTempoMarking = .Vivace
         case 118...143:
-            MetronomeDataController.tempoStatus = .Allegro
+            MetronomeDataController.currentTempoMarking = .Allegro
         case 98...117:
-            MetronomeDataController.tempoStatus = .Allegretto
+            MetronomeDataController.currentTempoMarking = .Allegretto
         case 84...97:
-            MetronomeDataController.tempoStatus = .Moderato
+            MetronomeDataController.currentTempoMarking = .Moderato
         case 74...83:
-            MetronomeDataController.tempoStatus = .Andantino
+            MetronomeDataController.currentTempoMarking = .Andantino
         case 63...73:
-            MetronomeDataController.tempoStatus = .Andante
+            MetronomeDataController.currentTempoMarking = .Andante
         case 53...62:
-            MetronomeDataController.tempoStatus = .Adagio
+            MetronomeDataController.currentTempoMarking = .Adagio
         case 47...52:
-            MetronomeDataController.tempoStatus = .Lento
+            MetronomeDataController.currentTempoMarking = .Lento
         case 30...46:
-            MetronomeDataController.tempoStatus = .Largo
+            MetronomeDataController.currentTempoMarking = .Largo
         default:
-            MetronomeDataController.tempoStatus = .Allegro
+            MetronomeDataController.currentTempoMarking = .Allegro
         }
     }
     
