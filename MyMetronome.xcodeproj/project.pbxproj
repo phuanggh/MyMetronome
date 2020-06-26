@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A5E1C1824A5969400624917 /* sound1b.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7A5E1C1624A5969400624917 /* sound1b.mp3 */; };
+		7A5E1C1924A5969400624917 /* sound1a.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7A5E1C1724A5969400624917 /* sound1a.mp3 */; };
 		7A6C222F2491B6F40005BA74 /* MetronomeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6C222E2491B6F40005BA74 /* MetronomeData.swift */; };
 		7ABBD0792489D29F00415893 /* TimeSigPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBD0782489D29F00415893 /* TimeSigPickerVC.swift */; };
 		7AD5CB8A2494A0BA009F6E43 /* TempoMarkingPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD5CB892494A0BA009F6E43 /* TempoMarkingPickerVC.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A5E1C1624A5969400624917 /* sound1b.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound1b.mp3; sourceTree = "<group>"; };
+		7A5E1C1724A5969400624917 /* sound1a.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound1a.mp3; sourceTree = "<group>"; };
 		7A6C222E2491B6F40005BA74 /* MetronomeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeData.swift; sourceTree = "<group>"; };
 		7ABBD0782489D29F00415893 /* TimeSigPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSigPickerVC.swift; sourceTree = "<group>"; };
 		7AD5CB892494A0BA009F6E43 /* TempoMarkingPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempoMarkingPickerVC.swift; sourceTree = "<group>"; };
@@ -76,6 +80,8 @@
 				7AF457CC248375A4004E0202 /* Views */,
 				7AF457CD248375B1004E0202 /* Controllers */,
 				7AF457C124836D90004E0202 /* Assets.xcassets */,
+				7A5E1C1724A5969400624917 /* sound1a.mp3 */,
+				7A5E1C1624A5969400624917 /* sound1b.mp3 */,
 				7AF457C324836D90004E0202 /* LaunchScreen.storyboard */,
 				7AF457C624836D90004E0202 /* Info.plist */,
 			);
@@ -158,7 +164,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A5E1C1924A5969400624917 /* sound1a.mp3 in Resources */,
 				7AF457C524836D90004E0202 /* LaunchScreen.storyboard in Resources */,
+				7A5E1C1824A5969400624917 /* sound1b.mp3 in Resources */,
 				7AF457C224836D90004E0202 /* Assets.xcassets in Resources */,
 				7AF457C024836D8D004E0202 /* Main.storyboard in Resources */,
 			);

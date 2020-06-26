@@ -7,10 +7,17 @@
 //
 
 import UIKit
+import AVFoundation
 
 class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSigVCDelegate, TempoMarkingDelegate {
+    
+    var player = AVPlayer()
+    var playerItem: AVPlayerItem!
+    var timeObserverToken: Any?
 
-    var timer = Timer()
+    var beatTimer = Timer()
+    var timeTimer = Timer()
+    
     var startPanlocation: CGPoint!
     
     @IBOutlet weak var tempoButtonOutlet: UIButton!
@@ -21,6 +28,8 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
     
     @IBOutlet weak var minusButtonOutlet: UIButton!
     @IBOutlet weak var addButtonOutlet: UIButton!
+    
+    @IBOutlet weak var timeLabel: UILabel!
     
     @IBOutlet var beatImageOutlets: [UIImageView]!
     
@@ -51,7 +60,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
             updateBPMLabel()
             updateMarkingUI()
             
-            if timer.isValid {
+            if beatTimer.isValid {
                 triggerTimer()
             }
             
@@ -64,7 +73,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
             updateBPMLabel()
             updateMarkingUI()
             
-            if timer.isValid {
+            if beatTimer.isValid {
                 triggerTimer()
             }
         }
@@ -91,18 +100,18 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
         
         updateBeatUI(MetronomeDataController.currentTimeSig[0])
         
-        if timer.isValid {
+        if beatTimer.isValid {
             triggerTimer()
         }
 //        print(tempoStr)
     }
     
     func updateBeatUI(_ topNum: Int) {
-        let showingImageNum = topNum - 1
+//        let showingImageNum = topNum - 1
     
         // change the range back to 0...15 when the number of images are back to 16
-        for i in 0...14 {
-            beatImageOutlets[i].isHidden = i <= showingImageNum ? false : true
+        for i in 0...13 {
+            beatImageOutlets[i].isHidden = i < topNum ? false : true
         }
     }
     
@@ -114,16 +123,17 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
         MetronomeDataController.speedConverter()
         bpmLabelOutlet.text = String(MetronomeDataController.currentBPM)
         
-        if timer.isValid {
+        if beatTimer.isValid {
             triggerTimer()
         }
     }
     
     
-    // MARK: - Beat
+    // MARK: - Play
     @IBAction func playButtonPressed(_ sender: Any) {
-        if timer.isValid {
-            timer.invalidate()
+        if beatTimer.isValid {
+            beatTimer.invalidate()
+            timeTimer.invalidate()
         } else {
             triggerTimer()
         }
@@ -131,17 +141,64 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
     
     
     func triggerTimer() {
-        timer.invalidate()
+        beatTimer.invalidate()
+        timeTimer.invalidate()
         
-        var time = 0
+        var second = 0
+        var beat = 0
+        let topNum = MetronomeDataController.currentTimeSig[0]
         let buttonNum = MetronomeDataController.currentTimeSig[1]
         let timeInterval = 60.00 / Double(MetronomeDataController.currentBPM) / ( Double(buttonNum) / Double(4) )
         
-        timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { (timer) in
+        beatTimer =
+            Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { (timer) in
             
-            time += 1
-            print(time)
+                beat += 1
+                
+                if beat % topNum == 1 {
+                    self.playSoundEffect("a")
+                } else {
+                    self.playSoundEffect("b")
+                }
+                
+            print("Beat: \(beat)")
+            
         }
+        
+        timeTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+            self.updateTimeLabel(second)
+            second += 1
+//            print("Time: \(second)")
+            
+        })
+    }
+    
+    func updateTimeLabel(_ second: Int) {
+        
+        var minuteStr = "00"
+        
+        let minute = second / 60
+        if minute == 0 {
+            minuteStr = "00"
+        } else if minute < 10 {
+            minuteStr = "0\(second / 60)"
+        } else {
+            minuteStr = "\(second / 60)"
+        }
+        
+        let secondStr = second % 60  < 10 ? "0\(second % 60)" : "\(second % 60)"
+        
+        timeLabel.text = minuteStr + ":" + secondStr
+        
+    }
+    
+    
+    // MARK: - AVFoundation
+    func playSoundEffect(_ order: String) {
+        let effectFileUrl = Bundle.main.url(forResource: "sound1\(order)", withExtension: "mp3")!
+        playerItem = AVPlayerItem(url: effectFileUrl)
+        player.replaceCurrentItem(with: playerItem)
+        player.play()
     }
     
     // MARK: - Segue
@@ -166,11 +223,13 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
         return .none
     }
     
+    // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
 
         bpmLabelOutlet.text = String(MetronomeDataController.currentBPM)
 
+        updateBeatUI(MetronomeDataController.currentTimeSig[0])
     }
 
 
