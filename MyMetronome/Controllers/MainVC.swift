@@ -36,8 +36,6 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
     
     @IBOutlet weak var bpmLabelOutlet: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var timeSigShadowOutlet: UIImageView!
-    
     
     
     // MARK: - BPM
@@ -245,8 +243,6 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
         return .none
     }
     
-    
-    @IBOutlet weak var testShadowView: UIView!
     // MARK: - UI
     func updateUI() {
         
@@ -257,36 +253,15 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
         beatBarOutlet.layer.cornerRadius = 16
         
         // Time Signature Button
-        timeSigButtonOutlet.layer.cornerRadius = timeSigButtonOutlet.frame.height / 2
-//        timeSigButtonOutlet.layer.shadowOpacity = 0.5
-//        timeSigButtonOutlet.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-//        timeSigButtonOutlet.layer.shadowOffset = CGSize(width: 5, height: 5)
-        
-//        timeSigShadowOutlet.layer.cornerRadius = timeSigShadowOutlet.frame.height / 2
-//        timeSigShadowOutlet.layer.shadowOpacity = 0.5
-//        timeSigShadowOutlet.layer.shadowColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-//        timeSigShadowOutlet.layer.shadowOffset = CGSize(width: -5, height: -5)
-        
-        // Sound On Button
-//        soundOnButtonOutlet.layer.shadowOpacity = 0.3
-//        soundOnButtonOutlet.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-//        soundOnButtonOutlet.layer.shadowOffset = CGSize(width: 5, height: 5)
+//        timeSigButtonOutlet.layer.cornerRadius = timeSigButtonOutlet.frame.height / 2
+
         
 //        // Tempo Marking Button
 //        tempoMarkingButtonOutlet.setTitleColor(UIColor.white, for: .normal)
 //        tempoMarkingButtonOutlet.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
 //        tempoMarkingButtonOutlet.tintColor = UIColor.white
 //        tempoMarkingButtonOutlet.layer.cornerRadius = tempoMarkingButtonOutlet.frame.height / 2
-//        tempoMarkingButtonOutlet.layer.shadowOffset = CGSize(width: 5, height: 5)
-//        tempoMarkingButtonOutlet.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-//        tempoMarkingButtonOutlet.layer.shadowOpacity = 0.5
-        
-        // Play Button
-//        playButtonOutlet.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-//        playButtonOutlet.layer.shadowOffset = CGSize(width: 5, height: 5)
-        playButtonOutlet.layer.shadowOpacity = beatTimer.isValid ? 0 : 0.5
-//        playButtonOutlet.layer.shadowColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        
+
         
     }
     
@@ -300,156 +275,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
 
         updateBeatUI(MetronomeDataController.currentTimeSig[0])
     }
-    
-    
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-//        timeSigButtonOutlet.inserLightShadow()
-//        testShadowView.layer.cornerRadius = 15
-//        testShadowView.inserLightShadow()
-//        tempoMarkingButtonOutlet.inserLightShadow()
-//        testShadowView.whiteShadow.delegate = testShadowView
-//        let layerW = CALayer()
-//        layerW.frame = testShadowView.layer.frame
-//        layerW.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-//        layerW.contents = testShadowView
-//        layerW.shadowColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-//        layerW.shadowOpacity = 0.5
-//        layerW.shadowOffset = CGSize(width: -5 , height: -5)
-//        layerW.masksToBounds = false
-//        testShadowView.layer.addSublayer(layerW)
-        
-    }
-
 
 }
 
 
-
-//extension UIView {
-//    func inserLightShadow() {
-//        let layerB = CALayer()
-//        let layerW = CALayer()
-//        layerW.frame = layer.bounds
-//        layerW.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-////        layerW.contents = self
-//        layerW.shadowColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-//        layerW.shadowOpacity = 0.5
-//        layerW.shadowOffset = CGSize(width: -5 , height: -5)
-//        layerW.masksToBounds = false
-//
-//        layerB.frame = layer.bounds
-//        layerB.backgroundColor = #colorLiteral(red: 0.924761951, green: 0.2762447596, blue: 0.4667485952, alpha: 1)
-//        layerB.shadowColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-//        layerB.shadowOpacity = 0.5
-//        layerB.shadowOffset = CGSize(width: 5 , height: 5)
-//        layerB.masksToBounds = false
-//
-//        layer.insertSublayer(layerW, at: 0)
-//        layer.insertSublayer(layerB, at: 1)
-//
-//    }
-//
-//
-//    var whiteShadow: CALayer {
-//        let layerW = CALayer(layer: layer)
-////        layerW.delegate = self
-//        layerW.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-//        layerW.cornerRadius = layer.cornerRadius
-//        layerW.shadowColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-//        layerW.shadowOpacity = 0.5
-//        layerW.shadowOffset = CGSize(width: -5 , height: -5)
-////        layer.insertSublayer(layerW, at: 0)
-//        return layerW
-//    }
-//
-//
-//
-//
-//}
-
-
-class ShadowedButton: UIButton {
-    
-    let layerW = CALayer()
-    let layerB = CALayer()
-    
-    private let backgroundColour = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor , opacity:Float = 0.5, blackOffset = CGSize(width: 5, height: 5), whiteOffset = CGSize(width: -5, height: -5), shadowRadius = CGFloat(3)
-    
-    private func setShadow() {
-        layerW.frame = layer.bounds
-        layerW.cornerRadius = layer.frame.height / 2
-        layerW.backgroundColor = backgroundColour
-        layerW.shadowColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        layerW.shadowOpacity = opacity
-        layerW.shadowRadius = shadowRadius
-        layerW.shadowOffset = whiteOffset
-        
-//        layerW.masksToBounds = false
-
-        layerB.frame = layer.bounds
-        layerB.cornerRadius = layer.frame.height / 2
-        layerB.backgroundColor = backgroundColour
-        layerB.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        layerB.shadowOpacity = opacity
-        layerW.shadowRadius = shadowRadius
-        layerB.shadowOffset = blackOffset
-    }
-    
-    func hideShadow(_ isTrue: Bool) {
-        layerW.isHidden = isTrue
-        layerB.isHidden = isTrue
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        
-        setShadow()
-        
-    }
-    
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        print("lay out subviews")
-        tintColor = UIColor.white
-        setTitleColor(UIColor.white, for: .normal)
-//        layer.cornerRadius = layer.frame.height / 2
-        
-//        let backgroundColour = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor , opacity:Float = 0.3, blackOffset = CGSize(width: 5, height: 5), whiteOffset = CGSize(width: -5, height: -5), cornorRadius = layer.frame.height / 2, shadowRadius = CGFloat(5)
-        
-//        layer.cornerRadius = cornorRadius
-//        layer.shadowRadius = shadowRadius
-//        layer.shadowColor = backgroundColour
-//        layer.shadowOpacity = opacity
-//        layer.shadowOffset = blackOffset
-        
-//        layerW.frame = layer.bounds
-//        layerW.backgroundColor = backgroundColour
-//        layerW.cornerRadius = cornorRadius
-////        layerW.contents = self
-//        layerW.shadowColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-//        layerW.shadowOpacity = opacity
-//        layerW.shadowRadius = shadowRadius
-//        layerW.shadowOffset = whiteOffset
-        
-        
-        
-//        layerW.masksToBounds = false
-//
-//        layerB.frame = layer.bounds
-//        layerB.backgroundColor = #colorLiteral(red: 0.924761951, green: 0.2762447596, blue: 0.4667485952, alpha: 1)
-//        layerB.shadowColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-//        layerB.shadowOpacity = 0.5
-//        layerB.shadowOffset = CGSize(width: 5 , height: 5)
-//        layerB.masksToBounds = false
-        
-        layer.insertSublayer(layerW, at: 0)
-        layer.insertSublayer(layerB, at: 0)
-//        layer.insertSublayer(layerB, at: 1)
-
-
-    }
-
-}

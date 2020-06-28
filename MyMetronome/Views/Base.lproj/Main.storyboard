@@ -103,11 +103,13 @@
                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4o8-iA-DYC" customClass="ShadowedButton" customModule="MyMetronome" customModuleProvider="target">
                                 <rect key="frame" x="133" y="245" width="150" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Andante" image="arrowtriangle.down.fill" catalog="system">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <segue destination="QgT-QR-jXG" kind="popoverPresentation" popoverAnchorView="4o8-iA-DYC" id="Cgy-Cx-FAj">
@@ -202,17 +204,6 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WEx-oP-h3R">
-                                <rect key="frame" x="302" y="263" width="86" height="106"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1q9-fy-0Vv">
-                                <rect key="frame" x="246" y="103" width="120" height="82"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.32549019607843138" green="0.32156862745098036" blue="0.34509803921568627" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -225,10 +216,8 @@
                         <outlet property="playButtonOutlet" destination="GVP-Oy-ZW2" id="fgN-RO-dnU"/>
                         <outlet property="soundOnButtonOutlet" destination="1Oa-ZH-ebt" id="Ydw-Ek-qf7"/>
                         <outlet property="tempoMarkingButtonOutlet" destination="4o8-iA-DYC" id="RQm-Ej-Fl0"/>
-                        <outlet property="testShadowView" destination="WEx-oP-h3R" id="5uz-al-bPI"/>
                         <outlet property="timeLabel" destination="XAY-of-fZR" id="Jry-Zl-7S5"/>
                         <outlet property="timeSigButtonOutlet" destination="ZkA-a0-UXZ" id="jS8-ZS-YVs"/>
-                        <outlet property="timeSigShadowOutlet" destination="1q9-fy-0Vv" id="k4n-tA-cB4"/>
                         <outletCollection property="beatImageOutlets" destination="wtH-tK-4EM" collectionClass="NSMutableArray" id="OC8-ac-CVZ"/>
                         <outletCollection property="beatImageOutlets" destination="HgK-xP-9DK" collectionClass="NSMutableArray" id="vX5-dt-lex"/>
                         <outletCollection property="beatImageOutlets" destination="T8X-El-Flv" collectionClass="NSMutableArray" id="5Xw-nB-xT7"/>
