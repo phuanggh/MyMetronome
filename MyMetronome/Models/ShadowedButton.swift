@@ -48,7 +48,7 @@ class ShadowedButton: UIButton {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        layer.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+//        backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         layer.cornerRadius = layer.frame.height / 2
         tintColor = UIColor.white
         setTitleColor(UIColor.white, for: .normal)

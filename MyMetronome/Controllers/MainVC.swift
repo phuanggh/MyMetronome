@@ -246,9 +246,6 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
     // MARK: - UI
     func updateUI() {
         
-//        testShadowView.inserLightShadow()
-        
-//         testShadowView.layer.insertSublayer(testShadowView.whiteShadow, at: 0)
         
         beatBarOutlet.layer.cornerRadius = 16
         

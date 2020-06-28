@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cHU-hs-nsC">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHU-hs-nsC">
                                 <rect key="frame" x="133" y="325" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -117,7 +117,7 @@
                                     </segue>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VKr-Pa-UDu">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VKr-Pa-UDu">
                                 <rect key="frame" x="20" y="193" width="360" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -207,6 +207,12 @@
                         </subviews>
                         <color key="backgroundColor" red="0.32549019607843138" green="0.32156862745098036" blue="0.34509803921568627" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="cHU-hs-nsC"/>
+                                <exclude reference="VKr-Pa-UDu"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="addButtonOutlet" destination="kBs-oG-Adl" id="1Jc-V8-5WZ"/>
