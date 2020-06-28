@@ -24,12 +24,12 @@ class TempoMarkingPickerVC: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return TempoMarkings.tempoArray.count
+        return TempoMarkings.tempoMarkingsArray.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        return TempoMarkings.tempoArray[row]
+        return TempoMarkings.tempoMarkingsArray[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -41,7 +41,7 @@ class TempoMarkingPickerVC: UIViewController, UIPickerViewDelegate, UIPickerView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let selectedRow = TempoMarkings.tempoArray.firstIndex(of: MetronomeDataController.currentTempoMarking.rawValue) ?? 0
+        let selectedRow = TempoMarkings.tempoMarkingsArray.firstIndex(of: MetronomeDataController.currentTempoMarking.rawValue) ?? 0
         pickerOutlet.selectRow(selectedRow, inComponent: 0, animated: false)
 
 

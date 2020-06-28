@@ -47,12 +47,8 @@ class TimeSigPickerVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if component == 0 {
             MetronomeDataController.currentTimeSig[0] = MetronomeDataController.topNum[row]
-//            currentTimeSigIndex[0] = row
-//            print(currentTempo)
         } else if component == 1 {
             MetronomeDataController.currentTimeSig[1] = MetronomeDataController.bottomNum[row]
-//            currentTimeSigIndex[1] = row
-//            print(currentTempo)
         }
         delegate?.passTimeSigInfo()
     }

@@ -31,10 +31,10 @@ enum TempoMarkings: String, CaseIterable {
     case Largo
 //    case Lentissimo
 //    case Larghissimo
-    static let tempoArray = TempoMarkings.allCases.map { $0.rawValue }
+    static let tempoMarkingsArray = TempoMarkings.allCases.map { $0.rawValue }
 }
 
-class MetronomeDataController {
+struct MetronomeDataController {
 //    static let tempoArray = TempoMarkings.allCases.map { $0.rawValue }
     static var currentTempoMarking: TempoMarkings = .Andante
     static var currentBPM: Int = 70
