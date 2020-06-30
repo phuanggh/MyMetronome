@@ -141,7 +141,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
         playButtonOutlet.setImage(displayImage, for: .normal)
         playButtonOutlet.layer.shadowOpacity = beatTimer.isValid ? 0.5 : 0
 //        playButtonOutlet.layerW.backgroundColor = beatTimer.isValid ? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
-        playButtonOutlet.hideShadow(beatTimer.isValid ? false : true)
+        playButtonOutlet.hideShadows(beatTimer.isValid ? false : true)
         
         
         if beatTimer.isValid {
@@ -216,7 +216,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
         let displayImage = player.isMuted ? UIImage(named: "soundOff.png") : UIImage(named: "soundOn.png")
         soundOnButtonOutlet.setImage(displayImage, for: .normal)
 //        soundOnButtonOutlet.layerW.isHidden = player.isMuted ? true : false
-        player.isMuted ? soundOnButtonOutlet.hideShadow(true) : soundOnButtonOutlet.hideShadow(false)
+        player.isMuted ? soundOnButtonOutlet.hideShadows(true) : soundOnButtonOutlet.hideShadows(false)
         
     }
     
@@ -245,7 +245,6 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
     
     // MARK: - UI
     func updateUI() {
-        
         
         beatBarOutlet.layer.cornerRadius = 16
         
