@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A3944F424B0C7E300D63962 /* ShadowedBPM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3944F324B0C7E300D63962 /* ShadowedBPM.swift */; };
 		7A48CDDC24A8E5700057542C /* ShadowedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A48CDDB24A8E5700057542C /* ShadowedButton.swift */; };
 		7A5E1C1824A5969400624917 /* sound1b.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7A5E1C1624A5969400624917 /* sound1b.mp3 */; };
 		7A5E1C1924A5969400624917 /* sound1a.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7A5E1C1724A5969400624917 /* sound1a.mp3 */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A3944F324B0C7E300D63962 /* ShadowedBPM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowedBPM.swift; sourceTree = "<group>"; };
 		7A48CDDB24A8E5700057542C /* ShadowedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowedButton.swift; sourceTree = "<group>"; };
 		7A5E1C1624A5969400624917 /* sound1b.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound1b.mp3; sourceTree = "<group>"; };
 		7A5E1C1724A5969400624917 /* sound1a.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound1a.mp3; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 			children = (
 				7A6C222E2491B6F40005BA74 /* MetronomeData.swift */,
 				7A48CDDB24A8E5700057542C /* ShadowedButton.swift */,
+				7A3944F324B0C7E300D63962 /* ShadowedBPM.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 			files = (
 				7AF457BD24836D8D004E0202 /* MainVC.swift in Sources */,
 				7A6C222F2491B6F40005BA74 /* MetronomeData.swift in Sources */,
+				7A3944F424B0C7E300D63962 /* ShadowedBPM.swift in Sources */,
 				7A48CDDC24A8E5700057542C /* ShadowedButton.swift in Sources */,
 				7AF457B924836D8D004E0202 /* AppDelegate.swift in Sources */,
 				7ABBD0792489D29F00415893 /* TimeSigPickerVC.swift in Sources */,
