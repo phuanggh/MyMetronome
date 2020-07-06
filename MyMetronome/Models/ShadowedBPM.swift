@@ -15,8 +15,8 @@ class ShadowedBPM: UIView {
     let layerBlue = CALayer()
     let layerW = CALayer()
     let layerB = CALayer()
-//    let newLayerW = CAShapeLayer()
-    let maxGlowSize = 15, minGlowSize = 0, animDuration = 2
+    
+    let maxGlowSize = 20, minGlowSize = 0, firstBeatColour = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).cgColor, otherBeatColour = #colorLiteral(red: 0.6117647059, green: 0.9529411765, blue: 1, alpha: 1).cgColor
     
     
     private func setShadows() {
@@ -29,20 +29,8 @@ class ShadowedBPM: UIView {
         layerW.shadowColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         layerW.shadowOpacity = opacity
         layerW.shadowRadius = shadowRadius
-        layerW.shadowOffset = .zero
-        
-//        newLayerW.backgroundColor = backgroundColour
-//        newLayerW.shadowColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-//        newLayerW.shadowOpacity = opacity
-//        newLayerW.lineWidth = 3
-//        newLayerW.strokeColor = UIColor.black.cgColor
-//        let arcCenter:CGPoint = newLayerW.position
-//        let radius:CGFloat = 95
-//        let path = UIBezierPath(arcCenter: arcCenter, radius: radius, startAngle: 0, endAngle: CGFloat(2 * Float.pi), clockwise: true)
-//        newLayerW.path = path.cgPath
-//        newLayerW.position = center
-        
-//
+        layerW.shadowOffset = whiteOffset
+
         layerB.frame = layer.bounds
         layerB.cornerRadius = cornerRadius
         layerB.backgroundColor = backgroundColour
@@ -52,76 +40,50 @@ class ShadowedBPM: UIView {
         layerB.shadowOffset = blackOffset
     }
     
-    func hideShadows(_ isTrue: Bool) {
-        layerW.isHidden = isTrue
-        layerB.isHidden = isTrue
-    }
+//    func hideShadows(_ isTrue: Bool) {
+//        layerW.isHidden = isTrue
+//        layerB.isHidden = isTrue
+//    }
     
     func showLayerBlue() {
-        let backgroundColour = #colorLiteral(red: 0.3254901961, green: 0.3215686275, blue: 0.3450980392, alpha: 1).cgColor, opacity:Float = 1, blackOffset = CGSize(width: 5, height: 5), whiteOffset = CGSize(width: -5, height: -5), shadowRadius = CGFloat(20), cornerRadius = layer.frame.height / 2, shadowColour = #colorLiteral(red: 0.6117647059, green: 0.9529411765, blue: 1, alpha: 1).cgColor
-        
-//        layerBlueL.frame = layer.bounds
-//
-//        layerBlueL.cornerRadius = cornerRadius
-//        layerBlueL.backgroundColor = backgroundColour
-//        layerBlueL.shadowColor = shadowColour
-//        layerBlueL.shadowOpacity = opacity
-//        layerBlueL.shadowRadius = shadowRadius
-//        layerBlueL.shadowOffset = whiteOffset
-//
-//        layerBlueR.frame = layer.bounds
-//        layerBlueR.cornerRadius = cornerRadius
-//        layerBlueR.backgroundColor = backgroundColour
-//        layerBlueR.shadowColor = shadowColour
-//        layerBlueR.shadowOpacity = opacity
-//        layerBlueR.shadowRadius = shadowRadius
-//        layerBlueR.shadowOffset = blackOffset
+        let backgroundColour = #colorLiteral(red: 0.3254901961, green: 0.3215686275, blue: 0.3450980392, alpha: 1).cgColor, opacity:Float = 1, cornerRadius = layer.frame.height / 2, shadowColour = #colorLiteral(red: 0.6117647059, green: 0.9529411765, blue: 1, alpha: 1).cgColor
         
         layerBlue.frame = layer.bounds
         layerBlue.cornerRadius = cornerRadius
         layerBlue.backgroundColor = backgroundColour
         layerBlue.shadowColor = shadowColour
         layerBlue.shadowOpacity = opacity
-        layerBlue.shadowRadius = CGFloat(maxGlowSize)
+        layerBlue.shadowRadius = CGFloat(minGlowSize)
         layerBlue.shadowOffset = .zero
-//        layerBlue.shadowPath = CGPath(roundedRect: layer.bounds, cornerWidth: cornerRadius, cornerHeight: cornerRadius, transform: nil)
         
         layer.insertSublayer(layerBlue, at: 0)
-//        layer.insertSublayer(layerBlueL, at: 0)
-//        layer.insertSublayer(layerBlueR, at: 0)
+
     }
     
-    func startAnimation() {
+    func startGlowingAnimation(duration: Double) {
 
-        
         let layerAnimation = CABasicAnimation(keyPath: "shadowRadius")
-        layerAnimation.fromValue = maxGlowSize
-        layerAnimation.toValue = minGlowSize
+        layerAnimation.fromValue = minGlowSize
+        layerAnimation.toValue = maxGlowSize
         layerAnimation.autoreverses = true
         layerAnimation.isAdditive = false
-        layerAnimation.duration = CFTimeInterval(animDuration/2)
+        layerAnimation.duration = CFTimeInterval(duration/2)
         layerAnimation.fillMode = CAMediaTimingFillMode.forwards
         layerAnimation.isRemovedOnCompletion = false
         layerAnimation.repeatCount = .infinity
         self.layerBlue.add(layerAnimation, forKey: "glowingAnimation")
     }
     
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        self.contentScaleFactor = UIScreen.main.scale
-//        self.layer.masksToBounds = false
-//
-//        self.startAnimation()
-//
-//    }
+    func stopAnimation() {
+        layerBlue.removeAllAnimations()
+    }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
         setShadows()
         showLayerBlue()
-//        startAnimation()
-//        layer.backgroundColor = #colorLiteral(red: 0.3254901961, green: 0.3215686275, blue: 0.3450980392, alpha: 1)
+
         layer.cornerRadius = layer.frame.height / 2
         
     }
@@ -132,9 +94,6 @@ class ShadowedBPM: UIView {
         
         layer.insertSublayer(layerW, at: 0)
         layer.insertSublayer(layerB, at: 0)
-
-//        layer.insertSublayer(layerBlueL, at: 0)
-//        layer.insertSublayer(layerBlueR, at: 0)
 
     }
 

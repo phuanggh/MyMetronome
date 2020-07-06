@@ -229,6 +229,7 @@
                         <outlet property="bpmLabelOutlet" destination="Fr9-Ni-Jif" id="bym-rN-jTX"/>
                         <outlet property="minusButtonOutlet" destination="NC8-0j-JCN" id="hKx-n6-hmF"/>
                         <outlet property="playButtonOutlet" destination="GVP-Oy-ZW2" id="fgN-RO-dnU"/>
+                        <outlet property="shadowedBPMViewOutlet" destination="5FH-OI-kcM" id="tuK-nQ-Ufj"/>
                         <outlet property="soundOnButtonOutlet" destination="1Oa-ZH-ebt" id="Ydw-Ek-qf7"/>
                         <outlet property="tempoMarkingButtonOutlet" destination="4o8-iA-DYC" id="RQm-Ej-Fl0"/>
                         <outlet property="timeLabel" destination="XAY-of-fZR" id="Jry-Zl-7S5"/>

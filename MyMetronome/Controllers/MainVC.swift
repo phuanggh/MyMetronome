@@ -36,6 +36,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
     
     @IBOutlet weak var bpmLabelOutlet: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var shadowedBPMViewOutlet: ShadowedBPM!
     
     
     // MARK: - BPM
@@ -147,6 +148,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
         if beatTimer.isValid {
             beatTimer.invalidate()
             timeTimer.invalidate()
+            shadowedBPMViewOutlet.stopAnimation()
         } else {
             triggerTimer()
         }
@@ -162,6 +164,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
         let topNum = MetronomeDataController.currentTimeSig[0]
         let buttonNum = MetronomeDataController.currentTimeSig[1]
         let timeInterval = 60.00 / Double(MetronomeDataController.currentBPM) / ( Double(buttonNum) / Double(4) )
+//        let firstBeat = timeInterval * Double(topNum)
         
         beatTimer =
             Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { (timer) in
@@ -170,9 +173,16 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
                 
                 beat % topNum == 1 ? self.playSoundEffect("a") : self.playSoundEffect("b")
                 
+                self.shadowedBPMViewOutlet.layerBlue.shadowColor = beat % topNum == 1 ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.6117647059, green: 0.9529411765, blue: 1, alpha: 1) 
+                
+                
             print("Beat: \(beat)")
             
         }
+        
+        shadowedBPMViewOutlet.startGlowingAnimation(duration: timeInterval)
+//        shadowedBPMViewOutlet.startColourAnimation(duration: firstBeat)
+        
         
         timeTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
             self.updateTimeLabel(second)
