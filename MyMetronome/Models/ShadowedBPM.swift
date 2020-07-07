@@ -23,7 +23,6 @@ class ShadowedBPM: UIView {
         let backgroundColour = #colorLiteral(red: 0.3254901961, green: 0.3215686275, blue: 0.3450980392, alpha: 1).cgColor, opacity:Float = 0.3, blackOffset = CGSize(width: 5, height: 5), whiteOffset = CGSize(width: -5, height: -5), shadowRadius = CGFloat(5), cornerRadius = layer.frame.height / 2
         
         layerW.frame = layer.bounds
-
         layerW.cornerRadius = cornerRadius
         layerW.backgroundColor = backgroundColour
         layerW.shadowColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -45,7 +44,7 @@ class ShadowedBPM: UIView {
 //        layerB.isHidden = isTrue
 //    }
     
-    func showLayerBlue() {
+    private func setBlueShadow() {
         let backgroundColour = #colorLiteral(red: 0.3254901961, green: 0.3215686275, blue: 0.3450980392, alpha: 1).cgColor, opacity:Float = 1, cornerRadius = layer.frame.height / 2, shadowColour = #colorLiteral(red: 0.6117647059, green: 0.9529411765, blue: 1, alpha: 1).cgColor
         
         layerBlue.frame = layer.bounds
@@ -82,7 +81,7 @@ class ShadowedBPM: UIView {
         super.init(coder: coder)
         
         setShadows()
-        showLayerBlue()
+        setBlueShadow()
 
         layer.cornerRadius = layer.frame.height / 2
         

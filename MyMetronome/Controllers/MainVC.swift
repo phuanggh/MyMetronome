@@ -164,7 +164,6 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
         let topNum = MetronomeDataController.currentTimeSig[0]
         let buttonNum = MetronomeDataController.currentTimeSig[1]
         let timeInterval = 60.00 / Double(MetronomeDataController.currentBPM) / ( Double(buttonNum) / Double(4) )
-//        let firstBeat = timeInterval * Double(topNum)
         
         beatTimer =
             Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { (timer) in
@@ -181,8 +180,6 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
         }
         
         shadowedBPMViewOutlet.startGlowingAnimation(duration: timeInterval)
-//        shadowedBPMViewOutlet.startColourAnimation(duration: firstBeat)
-        
         
         timeTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
             self.updateTimeLabel(second)
