@@ -141,9 +141,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
             UIImage(named: "play.png") : UIImage(named: "stop.png")
         playButtonOutlet.setImage(displayImage, for: .normal)
         playButtonOutlet.layer.shadowOpacity = beatTimer.isValid ? 0.5 : 0
-//        playButtonOutlet.layerW.backgroundColor = beatTimer.isValid ? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         playButtonOutlet.hideShadows(beatTimer.isValid ? false : true)
-        
         
         if beatTimer.isValid {
             beatTimer.invalidate()
@@ -160,27 +158,47 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
         timeTimer.invalidate()
         
         var second = 0
-        var beat = 0
+        var totalBeat = 0
         let topNum = MetronomeDataController.currentTimeSig[0]
         let buttonNum = MetronomeDataController.currentTimeSig[1]
         let timeInterval = 60.00 / Double(MetronomeDataController.currentBPM) / ( Double(buttonNum) / Double(4) )
         
+        
         beatTimer =
             Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { (timer) in
+                
+
+                let currentBeat = totalBeat % topNum
+                
+                // Beat Sounds Effect
+                currentBeat == 0 ? self.playSoundEffect("a") : self.playSoundEffect("b")
+                
+                // Glowing Shadow Colour
+                self.shadowedBPMViewOutlet.layerBlue.shadowColor = currentBeat == 0 ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.6117647059, green: 0.9529411765, blue: 1, alpha: 1)
+               
+                totalBeat += 1
+                
+                
+                if currentBeat == 0 {
+                    self.beatImageOutlets[0].image = UIImage()
+                    for i in 1 ..< topNum {
+                        self.beatImageOutlets[i].image = UIImage(named:"emptySlot.png")
+                    }
+                } else {
+                    self.beatImageOutlets[currentBeat].image = UIImage(named: "fillA")
+                }
+                
+
+            print("Beat: \(totalBeat)")
             
-                beat += 1
-                
-                beat % topNum == 1 ? self.playSoundEffect("a") : self.playSoundEffect("b")
-                
-                self.shadowedBPMViewOutlet.layerBlue.shadowColor = beat % topNum == 1 ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.6117647059, green: 0.9529411765, blue: 1, alpha: 1) 
                 
                 
-            print("Beat: \(beat)")
-            
         }
         
+        // Glowing Shadow Animation
         shadowedBPMViewOutlet.startGlowingAnimation(duration: timeInterval)
         
+        // Time Label
         timeTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
             self.updateTimeLabel(second)
             second += 1

@@ -10,13 +10,13 @@ import UIKit
 
 class ShadowedBPM: UIView {
     
-    let layerBlueL = CALayer()
-    let layerBlueR = CALayer()
+//    let layerBlueL = CALayer()
+//    let layerBlueR = CALayer()
     let layerBlue = CALayer()
     let layerW = CALayer()
     let layerB = CALayer()
     
-    let maxGlowSize = 20, minGlowSize = 0, firstBeatColour = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).cgColor, otherBeatColour = #colorLiteral(red: 0.6117647059, green: 0.9529411765, blue: 1, alpha: 1).cgColor
+    let maxGlowSize = 25, minGlowSize = 0, firstBeatColour = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).cgColor, otherBeatColour = #colorLiteral(red: 0.6117647059, green: 0.9529411765, blue: 1, alpha: 1).cgColor
     
     
     private func setShadows() {
@@ -74,6 +74,7 @@ class ShadowedBPM: UIView {
     }
     
     func stopAnimation() {
+        layerBlue.shadowColor = #colorLiteral(red: 0.6117647059, green: 0.9529411765, blue: 1, alpha: 1).cgColor
         layerBlue.removeAllAnimations()
     }
     
