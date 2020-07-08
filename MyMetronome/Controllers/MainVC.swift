@@ -8,8 +8,9 @@
 
 import UIKit
 import AVFoundation
+import GoogleMobileAds
 
-class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSigVCDelegate, TempoMarkingDelegate, CALayerDelegate {
+class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSigVCDelegate, TempoMarkingDelegate{
     
     var player = AVPlayer()
     var playerItem: AVPlayerItem!
@@ -38,6 +39,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var shadowedBPMViewOutlet: ShadowedBPM!
     
+    @IBOutlet weak var bannerView: GADBannerView!
     
     // MARK: - BPM
     @IBAction func minusButtonPressed(_ sender: Any) {
@@ -111,7 +113,6 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
     }
     
     func updateBeatUI(_ topNum: Int) {
-//        let showingImageNum = topNum - 1
     
         // change the range back to 0...15 when the number of images are back to 16
         for i in 0...15 {
@@ -143,6 +144,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
         playButtonOutlet.layer.shadowOpacity = beatTimer.isValid ? 0.5 : 0
         playButtonOutlet.hideShadows(beatTimer.isValid ? false : true)
         
+        // Beat & Timer
         if beatTimer.isValid {
             beatTimer.invalidate()
             timeTimer.invalidate()
@@ -167,7 +169,6 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
         beatTimer =
             Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { (timer) in
                 
-
                 let currentBeat = totalBeat % topNum
                 
                 // Beat Sounds Effect
@@ -175,10 +176,8 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
                 
                 // Glowing Shadow Colour
                 self.shadowedBPMViewOutlet.layerBlue.shadowColor = currentBeat == 0 ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.6117647059, green: 0.9529411765, blue: 1, alpha: 1)
-               
-                totalBeat += 1
                 
-                
+                // Beat Bar Image
                 if currentBeat == 0 {
                     self.beatImageOutlets[0].image = UIImage()
                     for i in 1 ..< topNum {
@@ -188,11 +187,10 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
                     self.beatImageOutlets[currentBeat].image = UIImage(named: "fillA")
                 }
                 
+                totalBeat += 1
 
             print("Beat: \(totalBeat)")
             
-                
-                
         }
         
         // Glowing Shadow Animation
@@ -273,17 +271,6 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
         
         beatBarOutlet.layer.cornerRadius = 16
         
-        // Time Signature Button
-//        timeSigButtonOutlet.layer.cornerRadius = timeSigButtonOutlet.frame.height / 2
-
-        
-//        // Tempo Marking Button
-//        tempoMarkingButtonOutlet.setTitleColor(UIColor.white, for: .normal)
-//        tempoMarkingButtonOutlet.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-//        tempoMarkingButtonOutlet.tintColor = UIColor.white
-//        tempoMarkingButtonOutlet.layer.cornerRadius = tempoMarkingButtonOutlet.frame.height / 2
-
-        
     }
     
     // MARK: - View Did Load
@@ -295,8 +282,38 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
         bpmLabelOutlet.text = String(MetronomeDataController.currentBPM)
 
         updateBeatUI(MetronomeDataController.currentTimeSig[0])
+        
+        // Google Ads
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        
+        bannerView.delegate = self
     }
 
 }
 
+extension MainVC: GADBannerViewDelegate {
+    
+    func adViewWillPresentScreen(_ bannerView: GADBannerView){
+        print("adViewWillPresentScreen")
+        
+    }
+    
+    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
+      print("ad View Will Leave Application")
+        let displayImage = UIImage(named: "play.png")
+        playButtonOutlet.setImage(displayImage, for: .normal)
+        playButtonOutlet.layer.shadowOpacity = 0.5
+        playButtonOutlet.hideShadows(false)
+        
+        // Beat & Timer
+        if beatTimer.isValid {
+            beatTimer.invalidate()
+            timeTimer.invalidate()
+            shadowedBPMViewOutlet.stopAnimation()
+        }
+    }
+    
+}
 

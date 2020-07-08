@@ -10,13 +10,14 @@ import UIKit
 
 class ShadowedBPM: UIView {
     
-//    let layerBlueL = CALayer()
-//    let layerBlueR = CALayer()
     let layerBlue = CALayer()
     let layerW = CALayer()
     let layerB = CALayer()
     
+    // Glow
     let maxGlowSize = 25, minGlowSize = 0, firstBeatColour = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).cgColor, otherBeatColour = #colorLiteral(red: 0.6117647059, green: 0.9529411765, blue: 1, alpha: 1).cgColor
+    
+    // View
     
     
     private func setShadows() {
@@ -38,11 +39,6 @@ class ShadowedBPM: UIView {
         layerB.shadowRadius = shadowRadius
         layerB.shadowOffset = blackOffset
     }
-    
-//    func hideShadows(_ isTrue: Bool) {
-//        layerW.isHidden = isTrue
-//        layerB.isHidden = isTrue
-//    }
     
     private func setBlueShadow() {
         let backgroundColour = #colorLiteral(red: 0.3254901961, green: 0.3215686275, blue: 0.3450980392, alpha: 1).cgColor, opacity:Float = 1, cornerRadius = layer.frame.height / 2, shadowColour = #colorLiteral(red: 0.6117647059, green: 0.9529411765, blue: 1, alpha: 1).cgColor
@@ -76,6 +72,10 @@ class ShadowedBPM: UIView {
     func stopAnimation() {
         layerBlue.shadowColor = #colorLiteral(red: 0.6117647059, green: 0.9529411765, blue: 1, alpha: 1).cgColor
         layerBlue.removeAllAnimations()
+    }
+    
+    convenience init(backgroundColour: CGColor, cornerRadius: Int) {
+        self.init(backgroundColour: #colorLiteral(red: 0.3254901961, green: 0.3215686275, blue: 0.3450980392, alpha: 1).cgColor, cornerRadius: 16)
     }
     
     required init?(coder: NSCoder) {

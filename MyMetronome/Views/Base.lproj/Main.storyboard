@@ -127,7 +127,12 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VKr-Pa-UDu">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jgA-HG-KVB" customClass="GADBannerView">
+                                <rect key="frame" x="48" y="812" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VKr-Pa-UDu">
                                 <rect key="frame" x="20" y="161" width="360" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -217,9 +222,15 @@
                         </subviews>
                         <color key="backgroundColor" red="0.32549019607843138" green="0.32156862745098036" blue="0.34509803921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="VKr-Pa-UDu"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="addButtonOutlet" destination="kBs-oG-Adl" id="1Jc-V8-5WZ"/>
+                        <outlet property="bannerView" destination="jgA-HG-KVB" id="87y-G4-w2u"/>
                         <outlet property="beatBarOutlet" destination="VKr-Pa-UDu" id="Eps-3N-yaY"/>
                         <outlet property="bpmLabelOutlet" destination="Fr9-Ni-Jif" id="bym-rN-jTX"/>
                         <outlet property="minusButtonOutlet" destination="NC8-0j-JCN" id="hKx-n6-hmF"/>
