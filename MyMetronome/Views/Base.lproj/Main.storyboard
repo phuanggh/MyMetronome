@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,11 +12,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainVC" customModule="MyMetronome" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZkA-a0-UXZ" customClass="ShadowedButton" customModule="MyMetronome" customModuleProvider="target">
-                                <rect key="frame" x="147" y="64" width="120" height="40"/>
+                                <rect key="frame" x="127.5" y="20" width="120" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="KmA-xt-AOb"/>
@@ -36,13 +36,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAY-of-fZR">
-                                <rect key="frame" x="179.33333333333334" y="693" width="55.666666666666657" height="19.333333333333371"/>
+                                <rect key="frame" x="160" y="578.5" width="55.5" height="19.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="sAh-Fm-e8M" userLabel="addMinusButtonSV">
-                                <rect key="frame" x="112" y="543" width="190" height="68"/>
+                                <rect key="frame" x="92.5" y="428.5" width="190" height="68"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NC8-0j-JCN">
                                         <rect key="frame" x="0.0" y="0.0" width="68" height="68"/>
@@ -67,7 +67,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GVP-Oy-ZW2" customClass="ShadowedButton" customModule="MyMetronome" customModuleProvider="target">
-                                <rect key="frame" x="171" y="611" width="72" height="72"/>
+                                <rect key="frame" x="151.5" y="496.5" width="72" height="72"/>
                                 <state key="normal" image="play">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
@@ -76,7 +76,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4o8-iA-DYC" customClass="ShadowedButton" customModule="MyMetronome" customModuleProvider="target">
-                                <rect key="frame" x="132" y="184" width="150" height="40"/>
+                                <rect key="frame" x="112.5" y="140" width="150" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="RJW-ix-Vih"/>
@@ -96,7 +96,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHU-hs-nsC" userLabel="BPMView">
-                                <rect key="frame" x="112" y="343" width="190" height="190"/>
+                                <rect key="frame" x="92.5" y="228.5" width="190" height="190"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5FH-OI-kcM" customClass="ShadowedBPM" customModule="MyMetronome" customModuleProvider="target">
                                         <rect key="frame" x="-1" y="0.0" width="190.00000000000006" height="189.99999999999997"/>
@@ -130,73 +130,73 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VKr-Pa-UDu" customClass="ShadowedBPM" customModule="MyMetronome" customModuleProvider="target">
-                                <rect key="frame" x="12" y="124" width="390" height="40"/>
+                                <rect key="frame" x="12" y="80" width="351" height="40"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="EeD-Io-cjH">
-                                        <rect key="frame" x="0.0" y="9.333333333333341" width="390" height="21.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="9.5" width="351" height="21"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptySlot" translatesAutoresizingMaskIntoConstraints="NO" id="wtH-tK-4EM" userLabel="slot1">
-                                                <rect key="frame" x="0.0" y="0.0" width="23.333333333333332" height="21.333333333333332"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="21" height="21"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptySlot" translatesAutoresizingMaskIntoConstraints="NO" id="HgK-xP-9DK" userLabel="slot2">
-                                                <rect key="frame" x="24.333333333333336" y="0.0" width="23.333333333333336" height="21.333333333333332"/>
+                                                <rect key="frame" x="22" y="0.0" width="21" height="21"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptySlot" translatesAutoresizingMaskIntoConstraints="NO" id="T8X-El-Flv" userLabel="slot3">
-                                                <rect key="frame" x="48.666666666666664" y="0.0" width="23.333333333333336" height="21.333333333333332"/>
+                                                <rect key="frame" x="44" y="0.0" width="21" height="21"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptySlot" translatesAutoresizingMaskIntoConstraints="NO" id="JA5-f1-vgh" userLabel="slot4">
-                                                <rect key="frame" x="73" y="0.0" width="23.333333333333329" height="21.333333333333332"/>
+                                                <rect key="frame" x="66" y="0.0" width="21" height="21"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptySlot" translatesAutoresizingMaskIntoConstraints="NO" id="eYU-gk-h8Y" userLabel="slot5">
-                                                <rect key="frame" x="97.333333333333329" y="0.0" width="23.333333333333329" height="21.333333333333332"/>
+                                                <rect key="frame" x="88" y="0.0" width="21" height="21"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="6" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptySlot" translatesAutoresizingMaskIntoConstraints="NO" id="WBB-FT-V7r" userLabel="slot6">
-                                                <rect key="frame" x="121.66666666666664" y="0.0" width="23.333333333333329" height="21.333333333333332"/>
+                                                <rect key="frame" x="110" y="0.0" width="21" height="21"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="7" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptySlot" translatesAutoresizingMaskIntoConstraints="NO" id="BQL-ze-xXm" userLabel="slot7">
-                                                <rect key="frame" x="146" y="0.0" width="23.333333333333343" height="21.333333333333332"/>
+                                                <rect key="frame" x="132" y="0.0" width="21" height="21"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="8" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptySlot" translatesAutoresizingMaskIntoConstraints="NO" id="ajm-uD-VSM" userLabel="slot8">
-                                                <rect key="frame" x="170.33333333333334" y="0.0" width="23.333333333333343" height="21.333333333333332"/>
+                                                <rect key="frame" x="154" y="0.0" width="21" height="21"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="9" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptySlot" translatesAutoresizingMaskIntoConstraints="NO" id="4sG-i2-m7F" userLabel="slot9">
-                                                <rect key="frame" x="194.66666666666666" y="0.0" width="23.333333333333343" height="21.333333333333332"/>
+                                                <rect key="frame" x="176" y="0.0" width="21" height="21"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="10" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptySlot" translatesAutoresizingMaskIntoConstraints="NO" id="kmw-QM-y2W" userLabel="slot10">
-                                                <rect key="frame" x="219" y="0.0" width="23.333333333333343" height="21.333333333333332"/>
+                                                <rect key="frame" x="198" y="0.0" width="21" height="21"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptySlot" translatesAutoresizingMaskIntoConstraints="NO" id="4mM-hI-0en" userLabel="slot11">
-                                                <rect key="frame" x="243.33333333333334" y="0.0" width="23.666666666666657" height="21.333333333333332"/>
+                                                <rect key="frame" x="220" y="0.0" width="21" height="21"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="12" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptySlot" translatesAutoresizingMaskIntoConstraints="NO" id="Np5-Zn-y3h" userLabel="slot12">
-                                                <rect key="frame" x="268" y="0.0" width="23.333333333333314" height="21.333333333333332"/>
+                                                <rect key="frame" x="242" y="0.0" width="21" height="21"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="13" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptySlot" translatesAutoresizingMaskIntoConstraints="NO" id="6Mh-X4-Caw" userLabel="slot13">
-                                                <rect key="frame" x="292.33333333333331" y="0.0" width="23.333333333333314" height="21.333333333333332"/>
+                                                <rect key="frame" x="264" y="0.0" width="21" height="21"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="14" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptySlot" translatesAutoresizingMaskIntoConstraints="NO" id="L38-8W-HF1" userLabel="slot16">
-                                                <rect key="frame" x="316.66666666666669" y="0.0" width="23.333333333333314" height="21.333333333333332"/>
+                                                <rect key="frame" x="286" y="0.0" width="21" height="21"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="15" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptySlot" translatesAutoresizingMaskIntoConstraints="NO" id="HoE-cn-T7k" userLabel="slot14">
-                                                <rect key="frame" x="341" y="0.0" width="23.333333333333314" height="21.333333333333332"/>
+                                                <rect key="frame" x="308" y="0.0" width="21" height="21"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="16" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptySlot" translatesAutoresizingMaskIntoConstraints="NO" id="ohF-xW-EFA" userLabel="slot15">
-                                                <rect key="frame" x="365.33333333333331" y="0.0" width="24.666666666666686" height="21.333333333333332"/>
+                                                <rect key="frame" x="330" y="0.0" width="21" height="21"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                         </subviews>
@@ -211,14 +211,14 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jgA-HG-KVB" customClass="GADBannerView">
-                                <rect key="frame" x="0.0" y="812" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="GLY-YD-yDX"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Oa-ZH-ebt" customClass="ShadowedButton" customModule="MyMetronome" customModuleProvider="target">
-                                <rect key="frame" x="287" y="64" width="40" height="40"/>
+                                <rect key="frame" x="267.5" y="20" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="dTt-GA-FCB"/>
                                     <constraint firstAttribute="width" constant="40" id="zFY-8A-CL9"/>
@@ -239,12 +239,12 @@
                             <constraint firstItem="cHU-hs-nsC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Dvc-Px-mJT"/>
                             <constraint firstItem="sAh-Fm-e8M" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="F93-iu-o4n"/>
                             <constraint firstItem="4o8-iA-DYC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="F9d-1S-XNT"/>
-                            <constraint firstItem="4o8-iA-DYC" firstAttribute="top" secondItem="VKr-Pa-UDu" secondAttribute="bottom" constant="20" id="Mjq-kh-8Gi"/>
                             <constraint firstItem="VKr-Pa-UDu" firstAttribute="top" secondItem="ZkA-a0-UXZ" secondAttribute="bottom" constant="20" id="NFV-zA-Lqs"/>
                             <constraint firstItem="jgA-HG-KVB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ojp-Qy-fhc"/>
                             <constraint firstAttribute="trailing" secondItem="VKr-Pa-UDu" secondAttribute="trailing" constant="12" id="Q6c-Ak-OdU"/>
                             <constraint firstItem="1Oa-ZH-ebt" firstAttribute="leading" secondItem="ZkA-a0-UXZ" secondAttribute="trailing" constant="20" id="S1H-4d-oTm"/>
                             <constraint firstItem="ZkA-a0-UXZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="SVu-KH-rkq"/>
+                            <constraint firstItem="cHU-hs-nsC" firstAttribute="top" secondItem="4o8-iA-DYC" secondAttribute="bottom" priority="999" constant="80" id="Sex-DR-KqM"/>
                             <constraint firstItem="ZkA-a0-UXZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WcW-T8-Q5P"/>
                             <constraint firstItem="ZkA-a0-UXZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Xn3-kj-a1H"/>
                             <constraint firstItem="GVP-Oy-ZW2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YIg-ka-FdA"/>
@@ -252,6 +252,7 @@
                             <constraint firstItem="XAY-of-fZR" firstAttribute="top" secondItem="GVP-Oy-ZW2" secondAttribute="bottom" constant="10" id="icV-zc-RB3"/>
                             <constraint firstItem="XAY-of-fZR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="k3r-9U-ArR"/>
                             <constraint firstItem="sAh-Fm-e8M" firstAttribute="width" secondItem="cHU-hs-nsC" secondAttribute="width" id="o2j-fi-AHf"/>
+                            <constraint firstItem="4o8-iA-DYC" firstAttribute="top" relation="greaterThanOrEqual" secondItem="VKr-Pa-UDu" secondAttribute="bottom" constant="20" id="tOP-bQ-bEC"/>
                             <constraint firstItem="GVP-Oy-ZW2" firstAttribute="top" secondItem="sAh-Fm-e8M" secondAttribute="bottom" id="xtA-hJ-fKI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -367,7 +368,7 @@
         <image name="add" width="68" height="68"/>
         <image name="arrowtriangle.down.fill" catalog="system" width="64" height="62"/>
         <image name="bpmBackground" width="190" height="190"/>
-        <image name="emptySlot" width="21.333333969116211" height="21.333333969116211"/>
+        <image name="emptySlot" width="21" height="21"/>
         <image name="minus" width="68" height="68"/>
         <image name="play" width="72" height="72"/>
         <image name="soundOn" width="40" height="40"/>

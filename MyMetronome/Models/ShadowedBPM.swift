@@ -74,7 +74,12 @@ class ShadowedBPM: UIView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-
+        
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
         // BPM View
         if layer.frame.height > 100 {
             layer.cornerRadius = layer.frame.height / 2
@@ -86,11 +91,6 @@ class ShadowedBPM: UIView {
             layer.cornerRadius = 16
             setShadows()
         }
-        
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
         
         layer.insertSublayer(layerW, at: 0)
         layer.insertSublayer(layerB, at: 0)
