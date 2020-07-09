@@ -32,7 +32,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
     @IBOutlet weak var soundOnButtonOutlet: ShadowedButton!
     
     // MARK: Non-funcational UI Outlets
-    @IBOutlet weak var beatBarOutlet: UIView!
+    @IBOutlet weak var beatBarOutlet: ShadowedBPM!
     @IBOutlet var beatImageOutlets: [UIImageView]!
     
     @IBOutlet weak var bpmLabelOutlet: UILabel!
@@ -179,12 +179,12 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
                 
                 // Beat Bar Image
                 if currentBeat == 0 {
-                    self.beatImageOutlets[0].image = UIImage()
+                    self.beatImageOutlets[0].image = UIImage(named: "fillA")
                     for i in 1 ..< topNum {
                         self.beatImageOutlets[i].image = UIImage(named:"emptySlot.png")
                     }
                 } else {
-                    self.beatImageOutlets[currentBeat].image = UIImage(named: "fillA")
+                    self.beatImageOutlets[currentBeat].image = UIImage(named: "fillB")
                 }
                 
                 totalBeat += 1
@@ -267,17 +267,19 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
     }
     
     // MARK: - UI
-    func updateUI() {
-        
-        beatBarOutlet.layer.cornerRadius = 16
-        
-    }
+//    func updateUI() {
+//
+//        beatBarOutlet.layer.cornerRadius = 16
+//        beatBarOutlet.layerB.cornerRadius = 16
+//        beatBarOutlet.layerW.cornerRadius = 16
+//
+//    }
     
     // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        updateUI()
+//        updateUI()
         
         bpmLabelOutlet.text = String(MetronomeDataController.currentBPM)
 
@@ -289,6 +291,10 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
         bannerView.load(GADRequest())
         
         bannerView.delegate = self
+        
+        // Beat Bar UI
+//        let outletFrame = beatBarOutlet.frame
+//        beatBarOutlet = ShadowedBPM(frame: outletFrame, cornerRadius: 16)
     }
 
 }
