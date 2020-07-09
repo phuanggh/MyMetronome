@@ -220,7 +220,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
         
         let secondStr = second % 60  < 10 ? "0\(second % 60)" : "\(second % 60)"
         
-        timeLabel.text = minuteStr + ":" + secondStr
+        timeLabel.text = minuteStr + " : " + secondStr
         
     }
     
