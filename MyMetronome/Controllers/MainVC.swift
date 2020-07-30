@@ -286,7 +286,7 @@ class MainVC: UIViewController, UIPopoverPresentationControllerDelegate, TimeSig
         updateBeatUI(MetronomeDataController.currentTimeSig[0])
         
         // Google Ads
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.adUnitID = "ca-app-pub-9291492084763801/5681477687"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         
