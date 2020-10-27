@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "minus.png",
+      "filename" : "btBackground.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "minus@2x.png",
+      "filename" : "btBackground@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "minus@3x.png",
+      "filename" : "btBackground@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
